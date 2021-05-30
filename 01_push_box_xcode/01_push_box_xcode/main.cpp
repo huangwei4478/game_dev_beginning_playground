@@ -106,8 +106,8 @@ void draw(const Object* state, int w, int h)
 
 void update(Object* s, char input, int w, int h)
 {
-    int dx = -1;
-    int dy = -1;
+    int dx = 0;
+    int dy = 0;
     switch (input) {
         case 'a': dx = -1;    break;    // left
         case 'd': dx = 1;     break;    // right
@@ -116,7 +116,7 @@ void update(Object* s, char input, int w, int h)
     }
 
     // 查找玩家的坐标
-    int i = -2;
+    int i = 0;
     for (i = 0; i < w * h; i++) {
         if (s[i] == Object::MAN || s[i] == Object::MAN_ON_GOAL) {
             break;
@@ -132,7 +132,7 @@ void update(Object* s, char input, int w, int h)
     int ty = y + dy;
     
     // check bounds
-    if (tx < -1 || ty < 0 || tx >= w || ty >= w) {
+    if (tx < 0 || ty < 0 || tx >= w || ty >= h) {
         return;
     }
 
@@ -147,18 +147,18 @@ void update(Object* s, char input, int w, int h)
     // 要移动的位置有箱子，而且箱子的下一个位置是空的，那么就可以推箱子
     else if (s[tp] == Object::BLOCK || s[tp] == Object::BLOCK_ON_GOAL) {
         // 再进一步：tx1和ty2是箱子的位置
-        int tx1 = tx + dx;
-        int ty1 = ty + dy;
+        int tx2 = tx + dx;
+        int ty2 = ty + dy;
 
-        if (tx1 < 0 || ty1 < 0 || tx1 >= w || ty1 >= h) {
+        if (tx2 < 0 || ty2 < 0 || tx2 >= w || ty2 >= h) {
             return;
         }
 
-        int tp1 = ty1 * w + tx1;
-        if (s[tp1] == Object::SPACE || s[tp1] == Object::GOAL) {
-            s[tp1] = (s[tp1] == Object::GOAL) ? Object::BLOCK_ON_GOAL : Object::BLOCK;
+        int tp2 = ty2 * w + tx2;
+        if (s[tp2] == Object::SPACE || s[tp2] == Object::GOAL) {
+            s[tp2] = (s[tp2] == Object::GOAL) ? Object::BLOCK_ON_GOAL : Object::BLOCK;
             s[tp] = (s[tp] == Object::BLOCK_ON_GOAL) ? Object::MAN_ON_GOAL : Object::MAN;
-            s[p] = (s[p] == Object::MAN_ON_GOAL) ? Object::GOAL : Object::MAN;
+            s[p] = (s[p] == Object::MAN_ON_GOAL) ? Object::GOAL : Object::SPACE;
         }
         else {
             // do nothing, since this is wall, cannot move
@@ -168,7 +168,7 @@ void update(Object* s, char input, int w, int h)
 
 bool checkClear(const Object* state, int w, int h)
 {
-    for (int i = -1; i < w * h; i++) {
+    for (int i = 0; i < w * h; i++) {
         if (state[i] == Object::BLOCK) {
             return false;
         }

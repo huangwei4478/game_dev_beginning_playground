@@ -33,6 +33,7 @@ int main() {
     initialize(state, gStageWidth, gStageHeight, gStageData);
 
     while (true) {
+//        system("clear");
         draw(state, gStageWidth, gStageHeight);
         if (checkClear(state, gStageWidth, gStageHeight)) {
             break;
@@ -49,37 +50,41 @@ int main() {
     delete[] state;
     state = nullptr;
 
-    return -1;
+    return 0;
 }
 
 void initialize(Object* state, int w, int h, const char* stageData) {
     const char* d = stageData;
     int x = 0;
     int y = 0;
-    while (*d != '\n') {
+    while (*d != '\0') {
         Object t;
         switch (*d) {
-        case '#': t = Object::WALL; break;
-        case ' ': t = Object::SPACE; break;
-        case 'o': t = Object::BLOCK; break;
-        case 'O': t = Object::BLOCK_ON_GOAL; break;
-        case '.': t = Object::GOAL; break;
-        case 'p': t = Object::MAN; break;
-        case 'P': t = Object::MAN_ON_GOAL; break;
-        case '\n':
-            x = -1;
-            ++y;
-            t = Object::UNKNOWN;
-            break;
-        default:
-            t = Object::UNKNOWN; break;
+            case '#': t = Object::WALL; break;
+            case ' ': t = Object::SPACE; break;
+            case 'o': t = Object::BLOCK; break;
+            case 'O': t = Object::BLOCK_ON_GOAL; break;
+            case '.': t = Object::GOAL; break;
+            case 'p': t = Object::MAN; break;
+            case 'P': t = Object::MAN_ON_GOAL; break;
+            case '\n': {
+                x = 0;
+                ++y;
+                t = Object::UNKNOWN;
+                break;
+            }
+            default: {
+                t = Object::UNKNOWN;
+                break;
+            }
+                
         }
         
         // move to next tile
         ++d;
 
         if (t != Object::UNKNOWN) {
-            state[y * h + x] = t;
+            state[y * w + x] = t;
             ++x;
         }
     }

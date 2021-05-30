@@ -25,6 +25,7 @@
 /* Begin PBXFileReference section */
 		0E233C652663A0AF004E5280 /* 01_push_box_xcode */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 01_push_box_xcode; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E233C682663A0AF004E5280 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		0E7516892663E51000640C69 /* 01_push_box_xcode.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = 01_push_box_xcode.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +58,7 @@
 		0E233C672663A0AF004E5280 /* 01_push_box_xcode */ = {
 			isa = PBXGroup;
 			children = (
+				0E7516892663E51000640C69 /* 01_push_box_xcode.entitlements */,
 				0E233C682663A0AF004E5280 /* main.cpp */,
 			);
 			path = 01_push_box_xcode;
@@ -239,6 +241,7 @@
 		0E233C6D2663A0AF004E5280 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = 01_push_box_xcode/01_push_box_xcode.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HK4D772C6B;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -249,6 +252,7 @@
 		0E233C6E2663A0AF004E5280 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = 01_push_box_xcode/01_push_box_xcode.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HK4D772C6B;
 				ENABLE_HARDENED_RUNTIME = YES;

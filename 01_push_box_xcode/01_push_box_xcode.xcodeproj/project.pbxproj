@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0E233C692663A0AF004E5280 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0E233C682663A0AF004E5280 /* main.cpp */; };
+		0E3DB3E8266FAF0900BBF0E5 /* stage.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0E3DB3E7266FAF0900BBF0E5 /* stage.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -20,11 +21,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		0E3DB3E6266FAE9100BBF0E5 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				0E3DB3E8266FAF0900BBF0E5 /* stage.txt in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0E233C652663A0AF004E5280 /* 01_push_box_xcode */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 01_push_box_xcode; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E233C682663A0AF004E5280 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		0E3DB3E7266FAF0900BBF0E5 /* stage.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = stage.txt; sourceTree = "<group>"; };
+		0E3DB3EA266FB59000BBF0E5 /* IntArray.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IntArray.hpp; sourceTree = "<group>"; };
 		0E7516892663E51000640C69 /* 01_push_box_xcode.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = 01_push_box_xcode.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -58,8 +71,10 @@
 		0E233C672663A0AF004E5280 /* 01_push_box_xcode */ = {
 			isa = PBXGroup;
 			children = (
+				0E3DB3E7266FAF0900BBF0E5 /* stage.txt */,
 				0E7516892663E51000640C69 /* 01_push_box_xcode.entitlements */,
 				0E233C682663A0AF004E5280 /* main.cpp */,
+				0E3DB3EA266FB59000BBF0E5 /* IntArray.hpp */,
 			);
 			path = 01_push_box_xcode;
 			sourceTree = "<group>";
@@ -74,6 +89,7 @@
 				0E233C612663A0AF004E5280 /* Sources */,
 				0E233C622663A0AF004E5280 /* Frameworks */,
 				0E233C632663A0AF004E5280 /* CopyFiles */,
+				0E3DB3E6266FAE9100BBF0E5 /* CopyFiles */,
 			);
 			buildRules = (
 			);

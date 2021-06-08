@@ -1,4 +1,8 @@
 #include <iostream>
+#include <fstream>
+
+#include "IntArray.hpp"
+       
 using namespace std;
 
 const char gStageData[] = "\
@@ -28,27 +32,38 @@ void update(Object* state, char input, int w, int h);
 bool checkClear(const Object* state, int w, int h);
 
 int main() {
-    Object* state = new Object[gStageWidth * gStageHeight];
-
-    initialize(state, gStageWidth, gStageHeight, gStageData);
-
-    while (true) {
-//        system("clear");
-        draw(state, gStageWidth, gStageHeight);
-        if (checkClear(state, gStageWidth, gStageHeight)) {
-            break;
-        }
-        cout << "a: left, d: right, w: up, s: down. command?" << endl;
-        char input;
-        cin >> input;
-
-        update(state, input, gStageWidth, gStageHeight);
-    }
-
-    cout << "Congratulation's you win." << endl;
-
-    delete[] state;
-    state = nullptr;
+    ifstream inputFile("stage.txt", ifstream::binary);
+    inputFile.seekg(0, ifstream::end);                      // 移动到末尾
+    
+    // 位置 == 文件大小
+    int fileSize = static_cast<int>(inputFile.tellg());
+    inputFile.seekg(0, ifstream::beg);                      // 回到起始位置
+    char* fileImage = new char[fileSize];                   // 分配足够的空间
+    inputFile.read(fileImage, fileSize);                    // 读取文件
+    
+    cout.write(fileImage, fileSize);                        // 显示读取的内容
+    
+//    Object* state = new Object[gStageWidth * gStageHeight];
+//
+//    initialize(state, gStageWidth, gStageHeight, gStageData);
+//
+//    while (true) {
+////        system("clear");
+//        draw(state, gStageWidth, gStageHeight);
+//        if (checkClear(state, gStageWidth, gStageHeight)) {
+//            break;
+//        }
+//        cout << "a: left, d: right, w: up, s: down. command?" << endl;
+//        char input;
+//        cin >> input;
+//
+//        update(state, input, gStageWidth, gStageHeight);
+//    }
+//
+//    cout << "Congratulation's you win." << endl;
+//
+//    delete[] state;
+//    state = nullptr;
 
     return 0;
 }
@@ -167,7 +182,7 @@ void update(Object* s, char input, int w, int h)
 }
 
 bool checkClear(const Object* state, int w, int h)
-{
+{ 
     for (int i = 0; i < w * h; i++) {
         if (state[i] == Object::BLOCK) {
             return false;
